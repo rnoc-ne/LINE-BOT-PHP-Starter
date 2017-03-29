@@ -1,8 +1,8 @@
 
 <?php
 require_once './vendor/autoload.php';
-$token = 'LINE_NOTIFY_TOKEN';
+$token = 'lmDflC804HfDMESt7elcodTAwK5NqBsxKS7DTl9YhZ7aHxS09g+UJB1dPxm5i45p+2wYgUFahKYhC2bgveZvq1GvxloXl3IgGNZCRnjSSSLail7bDPZsXJ3sF1IXdxcaK04MRK5lM0SCP4GRu9zxfgdB04t89/1O/w1cDnyilFU=';
 $ln = new KS\Line\LineNotify($token);
-$text = ' Hi'; // Line Notify ºÑ§¤ÑºãËéãÊè¢éÍ¤ÇÒÁ áµèÍÂÒ¡Êè§ááµèÃÙ»ÀÒ¾àÅÂãÊè space äÇé
+$text = ' Hi'; // Line Notify ÂºÃ‘Â§Â¤Ã‘ÂºÃ£Ã‹Ã©Ã£ÃŠÃ¨Â¢Ã©ÃÂ¤Ã‡Ã’Ã Ã¡ÂµÃ¨ÃÃ‚Ã’Â¡ÃŠÃ¨Â§Ã¡Ã¡ÂµÃ¨ÃƒÃ™Â»Ã€Ã’Â¾Ã Ã…Ã‚Ã£ÃŠÃ¨ space Ã¤Ã‡Ã©
 $image_path = '/screen.png'; //Line notify allow only jpeg and png file
 $ln->send($text, $image_path);
