@@ -1,7 +1,7 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../LineNotify.php';
+require_once __DIR__ . '/../src/LineNotify.php';
 
 /**
  * @property KS\Line\LineNotify LineNotify
