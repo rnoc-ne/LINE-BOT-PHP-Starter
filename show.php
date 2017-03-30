@@ -1,8 +1,28 @@
 
 <?php
-require_once './vendor/autoload.php';
-$token = 'lmDflC804HfDMESt7elcodTAwK5NqBsxKS7DTl9YhZ7aHxS09g+UJB1dPxm5i45p+2wYgUFahKYhC2bgveZvq1GvxloXl3IgGNZCRnjSSSLail7bDPZsXJ3sF1IXdxcaK04MRK5lM0SCP4GRu9zxfgdB04t89/1O/w1cDnyilFU=';
-$ln = new KS\Line\LineNotify($token);
-$text = ' Hi'; // Line Notify ÂºÃ‘Â§Â¤Ã‘ÂºÃ£Ã‹Ã©Ã£ÃŠÃ¨Â¢Ã©ÃÂ¤Ã‡Ã’Ã Ã¡ÂµÃ¨ÃÃ‚Ã’Â¡ÃŠÃ¨Â§Ã¡Ã¡ÂµÃ¨ÃƒÃ™Â»Ã€Ã’Â¾Ã Ã…Ã‚Ã£ÃŠÃ¨ space Ã¤Ã‡Ã©
-$image_path = '/screen.png'; //Line notify allow only jpeg and png file
-$ln->send($text, $image_path);
+define('LINE_API',"https://notify-api.line.me/api/notify");
+ 
+$token = "S4hSzyNalrSO4e2T3sPi92ka90zYlUDgYNM2ymlipDK"; //ãÊèToken ·Õècopy àÍÒäÇé
+
+$str = "Hello"; //¢éÍ¤ÇÒÁ·ÕèµéÍ§¡ÒÃÊè§ ÊÙ§ÊØ´ 1000 µÑÇÍÑ¡ÉÃ
+ 
+$res = notify_message($str,$token);
+print_r($res);
+
+function notify_message($message,$token){
+ $queryData = array('message' => $message);
+ $queryData = http_build_query($queryData,’’,’&’);
+ $headerOptions = array( 
+         ‘http’=>array(
+            ‘method’=>’POST’,
+            ‘header’=> “Content-Type: application/x-www-form-urlencoded\r\n”
+                      .”Authorization: Bearer “.$token.”\r\n”
+                      .”Content-Length: “.strlen($queryData).”\r\n”,
+            ‘content’ => $queryData
+         ),
+ );
+ $context = stream_context_create($headerOptions);
+ $result = file_get_contents(LINE_API,FALSE,$context);
+ $res = json_decode($result);
+ return $res;
+}
