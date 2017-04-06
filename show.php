@@ -2,27 +2,19 @@
 <?php
 define('LINE_API',"https://notify-api.line.me/api/notify");
  
-$token = "S4hSzyNalrSO4e2T3sPi92ka90zYlUDgYNM2ymlipDK"; //ãÊèToken ·Õècopy àÍÒäÇé
+$token = "S4hSzyNalrSO4e2T3sPi92ka90zYlUDgYNM2ymlipDK"; //
 
-$str = "Hello"; //¢éÍ¤ÇÒÁ·ÕèµéÍ§¡ÒÃÊè§ ÊÙ§ÊØ´ 1000 µÑÇÍÑ¡ÉÃ
- 
-$res = notify_message($str,$token);
-print_r($res);
+$str = "Hello"; //
 
-function notify_message($message,$token){
- $queryData = array('message' => $message);
- $queryData = http_build_query($queryData,’’,’&’);
- $headerOptions = array( 
-         ‘http’=>array(
-            ‘method’=>’POST’,
-            ‘header’=> “Content-Type: application/x-www-form-urlencoded\r\n”
-                      .”Authorization: Bearer “.$token.”\r\n”
-                      .”Content-Length: “.strlen($queryData).”\r\n”,
-            ‘content’ => $queryData
-         ),
- );
- $context = stream_context_create($headerOptions);
- $result = file_get_contents(LINE_API,FALSE,$context);
- $res = json_decode($result);
- return $res;
-}
+$token = 'YOUR LINE NOTIFY TOKEN';
+$ln = new KS\Line\LineNotify($token);
+
+$text = 'Hello Line Notify';
+$ln->send($text);
+
+
+
+//$text = 'Hello Line Notify';
+//$image_path = '/LINE-BOT-PHP-Starter/master/screen.png'; //Line notify allow only jpeg and png file
+//$ln->send($text, $image_path);
+
