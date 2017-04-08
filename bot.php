@@ -44,4 +44,4 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "Wellcome to my world ";
+echo "OK   test";
